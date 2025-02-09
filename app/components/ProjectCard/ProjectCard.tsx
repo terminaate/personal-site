@@ -9,9 +9,14 @@ type Props = HTMLAttributes<HTMLDivElement> & {
 
 export const ProjectCard: FC<Props> = ({ className, project, ...props }) => {
   return (
-    <div {...props} className={classNames(cl.projectCard, className)}>
-      <img className={cl.projectImage} src={project.image} alt="" />
-      <div className={cl.projectInfoContainer}></div>
+    <div
+      {...props}
+      style={{ backgroundImage: `url(${project.image})` }}
+      className={classNames(cl.projectCard, className)}
+    >
+      {/*<div className={cl.projectInfoContainer}>*/}
+      {/*  <span>{project.description}</span>*/}
+      {/*</div>*/}
     </div>
   );
 };

@@ -1,15 +1,23 @@
 .projectCard {
-  height: 300px;
-  width: fit-content;
+  width: 100%;
+  max-width: 800px;
+  min-height: 170px;
+  height: 100%;
   border-radius: 10px;
   position: relative;
   border: 2px solid var(--background-ui);
+  //background: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  //overflow: hidden;
 
-  .projectImage {
-    height: 100%;
-    border-radius: inherit;
-    object-fit: contain;
-  }
+  //.projectImage {
+  //  height: 100%;
+  //  border-radius: inherit;
+  //  object-fit: contain;
+  //}
 
   .projectInfoContainer {
     position: absolute;

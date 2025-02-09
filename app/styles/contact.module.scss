@@ -1,0 +1,32 @@
+.page {
+  display: flex;
+  row-gap: 20px;
+  flex-direction: column;
+
+  .title {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .contact {
+    cursor: pointer;
+    width: fit-content;
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    font-family: var(--font-primary);
+    font-size: 21px;
+    font-weight: 600;
+    padding: 10px;
+    padding-inline: 15px;
+    border-radius: 10px;
+    transition: background-color 0.3s, color 0.3s;
+    color: var(--text-primary);
+    text-decoration: none;
+
+    &:hover {
+      background-color: var(--text-primary);
+      color: var(--background-primary);
+    }
+  }
+}

@@ -40,11 +40,6 @@ body {
   padding-block: 50px;
 }
 
-//img,
-//button {
-//  user-select: none;
-//}
-
 button {
   background: none;
   border: none;
@@ -68,6 +63,11 @@ code {
 
   .mdx-slug-link {
     position: relative;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
 
     &:after {
       content: "#";

@@ -11,7 +11,7 @@ export const meta: MetaFunction = () => {
 
 export const loader = async () => {
   const modules = import.meta.glob('/app/content/blog/**/*.mdx');
-  const posts = await getPosts(modules);
+  const posts = (await getPosts(modules)).filter((post) => post.published);
 
   posts.sort((a, b) => +new Date(b.date) - +new Date(a.date));
 

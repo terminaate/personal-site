@@ -1,0 +1,12 @@
+.page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  max-height: 90%;
+  grid-gap: 15px;
+
+  .projectCard {
+    //width: 100%;
+    //aspect-ratio: 16 / 9;
+  }
+}

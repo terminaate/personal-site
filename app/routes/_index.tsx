@@ -1,8 +1,6 @@
 import type { MetaFunction } from '@remix-run/node';
 import { BasicPage } from '@/components/BasicPage';
 import cl from '#/index.module.scss';
-import { ProjectCard } from '@/components/ProjectCard';
-import { projects } from '@/common/constants/projects';
 import { skills } from '@/common/constants/skills';
 
 export const meta: MetaFunction = () => {
@@ -80,7 +78,7 @@ export default function Index() {
           <span>Latest project: </span>
         </h3>
         <div className={cl.latestProjectContainer}>
-          <ProjectCard project={projects[0]} />
+          {/*<ProjectCard project={projects[0]} />*/}
         </div>
       </section>
     </BasicPage>
