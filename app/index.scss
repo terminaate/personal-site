@@ -66,6 +66,16 @@ code {
 .mdx-content {
   margin-top: 20px;
 
+  .mdx-slug-link {
+    position: relative;
+
+    &:after {
+      content: "#";
+      position: absolute;
+      left: -4%;
+    }
+  }
+
   h1,
   h2,
   h3,

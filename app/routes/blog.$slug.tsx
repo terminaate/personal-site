@@ -36,14 +36,17 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   }
 
   const post = await match?.resolver?.();
-  // console.log(post.default.length);
 
   return Response.json({
     post: renderToString(
       post.default({
         components: {
           h2({ children, id }: any) {
-            return <h2 id={id}>{children}</h2>;
+            return (
+              <a id={id} href={`#${id}`}>
+                <h2 className={'mdx-slug-link'}>{children}</h2>
+              </a>
+            );
           },
         },
       }),

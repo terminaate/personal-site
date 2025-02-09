@@ -29,6 +29,11 @@ export function Layout({ children }: PropsWithChildren) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="d35a301a-4cfd-43e7-adca-bb450237c5ca"
+        ></script>
         <Meta />
         <Links />
       </head>
