@@ -2,10 +2,13 @@ import type { MetaFunction } from '@remix-run/node';
 import { BasicPage } from '@/components/BasicPage';
 import cl from '#/index.module.scss';
 import { skills } from '@/common/constants/skills';
+import { projects } from '@/common/constants/projects';
 
 export const meta: MetaFunction = () => {
   return [{ title: 'Terminaate' }];
 };
+
+const latestProject = projects[0];
 
 export default function Index() {
   return (
@@ -31,6 +34,15 @@ export default function Index() {
             just functional but also well-designed and user-friendly.
           </p>
         </span>
+      </section>
+
+      <section className={cl.sectionContainer}>
+        <h3 className={cl.title}>
+          <span>Latest project: </span>
+        </h3>
+        <div className={cl.latestProjectContainer}>
+          <img src={latestProject.image} alt="" />
+        </div>
       </section>
 
       <section className={cl.sectionContainer}>
@@ -75,11 +87,27 @@ export default function Index() {
 
       <section className={cl.sectionContainer}>
         <h3 className={cl.title}>
-          <span>Latest project: </span>
+          <span>Extra: </span>
         </h3>
-        <div className={cl.latestProjectContainer}>
-          {/*<ProjectCard project={projects[0]} />*/}
-        </div>
+        <span className={cl.text}>
+          <p>
+            I don't play a lot of video games anymore (I enjoy programming
+            more), but I used to be pretty into <span>Minecraft</span>. I've
+            also enjoyed <span>Cyberpunk 2077</span>, <span>Watch dogs 2</span>,{' '}
+            <span>Valorant</span>, <span>Overwatch (1)</span>
+          </p>
+          <p style={{ marginTop: '5px' }}>
+            I also can't live without music, my favorites genre is Rap, and here
+            is some of my favorite artists: <span>Kendrick lamar</span>,{' '}
+            <span>JID</span>, <span>Tyler, the creator</span>,{' '}
+            <span>Mick jenkins</span>, <span>MF DOOM</span>
+          </p>
+          <p style={{ marginTop: '5px' }}>
+            Lately I've been into TV series, here are some of the ones I've
+            watched recently: : <span>Arcane</span>, <span>Snowfall</span>,{' '}
+            <span>Love Death + Robots</span>, <span>Breaking bad</span>
+          </p>
+        </span>
       </section>
     </BasicPage>
   );

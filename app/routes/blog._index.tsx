@@ -39,9 +39,7 @@ export default function Blog_index() {
 
   return (
     <BasicPage className={cl.page}>
-      <h3 className={cl.title}>
-        Here you can find some of my thoughts about anything
-      </h3>
+      <h3 className={cl.title}>Some of my notes and thoughts.</h3>
       <div className={cl.posts}>
         {data.map((post, key) => (
           <PostComponent {...post} key={key} />

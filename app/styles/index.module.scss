@@ -54,8 +54,12 @@
       span {
         @include index.circlesText;
         font-family: var(--font-primary);
-        text-shadow: 0 0 20px var(--text-green);
+        text-shadow: 0 0 10px var(--text-green);
         font-weight: 500;
+      }
+
+      li {
+        display: flex;
       }
     }
 
@@ -121,9 +125,18 @@
     //}
 
     .latestProjectContainer {
-      width: 100%;
-      //min-width: 700px;
-      //border: 1px solid white;
+      width: 70%;
+      height: fit-content;
+      border-radius: 10px;
+      border: 2px solid var(--background-ui);
+      //overflow: hidden;
+
+      img {
+        width: 100%;
+        //height: 100%;
+        //object-fit: cover;
+        border-radius: inherit;
+      }
     }
   }
 }

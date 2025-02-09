@@ -2,7 +2,7 @@
   display: flex;
   //align-items: center;
   justify-content: center;
-  row-gap: 15px;
+  //row-gap: 15px;
 
   .title {
     font-size: 18px;
@@ -16,7 +16,7 @@
     max-height: 90%;
     //width: 100%;
     grid-gap: 15px;
-    margin-top: 20px;
+    margin-top: 10px;
 
     @media screen and (max-width: 1060px) {
       grid-template-columns: 1fr;
