@@ -1,0 +1,39 @@
+.navBarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 700px;
+  z-index: 1;
+  background-color: var(--background-primary);
+  //border: 1px solid white;
+
+  .title {
+    font-size: 30px;
+    line-height: 100%;
+    cursor: pointer;
+    font-family: var(--font-secondary);
+
+    span {
+      filter: blur(2px);
+    }
+  }
+
+  .navBar {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+
+    span {
+      font-family: var(--font-secondary);
+      font-size: 16px;
+      position: relative;
+
+      .activeTab {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+      }
+    }
+  }
+}

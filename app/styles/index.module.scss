@@ -1,0 +1,130 @@
+@use "../index";
+
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 700px;
+  row-gap: 17px;
+
+  .sectionContainer {
+    display: flex;
+    align-items: flex-start;
+    row-gap: 10px;
+    position: relative;
+    width: 100%;
+
+    .title {
+      user-select: text !important;
+      font-size: 20px;
+      width: max-content;
+      position: relative;
+
+      // bruh
+      span {
+        position: absolute;
+        right: -10%;
+        padding-right: 10px;
+        width: max-content;
+      }
+    }
+
+    .code {
+      width: 100%;
+      max-width: 700px;
+      font-size: 17px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .text {
+      font-size: 17px;
+      width: 100%;
+      max-width: 700px;
+      text-align: left;
+      font-family: var(--font-primary);
+      //text-align: justify;
+      //text-indent: 5px;
+      //padding-left: 20px;
+      line-height: 25px;
+
+      @media screen and (max-width: 800px) {
+        padding: 0;
+      }
+
+      span {
+        @include index.circlesText;
+        font-family: var(--font-primary);
+        text-shadow: 0 0 20px var(--text-green);
+        font-weight: 500;
+      }
+    }
+
+    .skillsContainer {
+      width: 100%;
+
+      .skills {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        flex-wrap: wrap;
+
+        .skillsCategoryContainer {
+          display: flex;
+          flex-direction: column;
+          row-gap: 3px;
+          //padding: 10px;
+          //border: 2px solid var(--background-ui);
+
+          .skillsCategoryName {
+            font-family: var(--font-secondary);
+            font-size: 16px;
+          }
+
+          .categorySkills {
+            width: fit-content;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            flex-wrap: wrap;
+            border: 2px solid var(--background-ui)
+          }
+        }
+      }
+    }
+
+    //.skillsContainer {
+    //  display: flex;
+    //  flex-direction: column;
+    //  row-gap: 3px;
+    //
+    //  > span {
+    //  }
+    //
+    //  .skills {
+    //    padding: 10px;
+    //    display: flex;
+    //    align-items: center;
+    //    gap: 5px;
+    //    flex-wrap: wrap;
+    //    border: 2px solid var(--background-ui)
+    //  }
+    //
+    //  //width: 100%;
+    //  //max-width: 700px;
+    //  //font-size: 17px;
+    //  //display: flex;
+    //  //align-items: center;
+    //  //flex-wrap: wrap;
+    //  //column-gap: 3px;
+    //  //
+    //}
+
+    .latestProjectContainer {
+      width: 100%;
+      //min-width: 700px;
+      //border: 1px solid white;
+    }
+  }
+}
