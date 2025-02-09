@@ -14,7 +14,7 @@ export const Navbar = () => {
   const location = useLocation();
 
   return (
-    <motion.nav layout={'position'} className={cl.navBarContainer}>
+    <motion.nav className={cl.navBarContainer}>
       <Link to={'/'} className={cl.title}>
         Termina<span>a</span>te
       </Link>
