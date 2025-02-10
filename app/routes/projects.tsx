@@ -11,14 +11,17 @@ export default function Projects() {
   return (
     <BasicPage className={cl.page}>
       {projects.map((project, index) => (
-        <div
+        <a
           style={{ backgroundImage: `url(${project.image})` }}
           key={index}
           className={cl.projectCard}
+          target={'_blank'}
+          rel={'noreferrer'}
+          href={project.link ?? project.githubLink ?? ''}
         >
           <h2 className={cl.projectTitle}>{project.title}</h2>
           <span className={cl.projectDescription}>{project.description}</span>
-        </div>
+        </a>
       ))}
     </BasicPage>
   );
