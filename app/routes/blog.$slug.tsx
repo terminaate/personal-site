@@ -61,11 +61,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   return defer({
     post: renderedPost,
     meta: {
-      title: postPromise.then(async (post: any) => {
-        await new Promise((res) => setTimeout(res, 4500));
-
-        return post?.frontmatter?.name;
-      }),
+      title: postPromise.then((post: any) => post?.frontmatter?.name),
       description: postPromise.then(
         (post: any) => post?.frontmatter?.description,
       ),
