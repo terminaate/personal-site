@@ -47,6 +47,10 @@
       //padding-left: 20px;
       line-height: 25px;
 
+      p:not(:first-child) {
+        margin-top: 12px;
+      }
+
       @media screen and (max-width: 800px) {
         padding: 0;
       }

@@ -22,12 +22,12 @@ export default function Index() {
             Hey! I'm a young web developer from <span>Russia</span> who loves
             building and designing for the web.
           </p>
-          <p style={{ marginTop: '5px' }}>
+          <p>
             I specialize in <span>React</span> and <span>Next.js</span>,
             focusing on creating modular, efficient, and visually appealing
             projects.
           </p>
-          <p style={{ marginTop: '5px' }}>
+          <p>
             I also have a growing interest in <span>DevOps</span> and{' '}
             <span>backend</span> development, exploring how everything connects
             behind the scenes. I enjoy crafting web applications that are not
@@ -36,14 +36,14 @@ export default function Index() {
         </span>
       </section>
 
-      <section className={cl.sectionContainer}>
-        <h3 className={cl.title}>
-          <span>Latest project: </span>
-        </h3>
-        <div className={cl.latestProjectContainer}>
-          <img src={latestProject.image} alt="" />
-        </div>
-      </section>
+      {/*<section className={cl.sectionContainer}>*/}
+      {/*  <h3 className={cl.title}>*/}
+      {/*    <span>Latest project: </span>*/}
+      {/*  </h3>*/}
+      {/*  <div className={cl.latestProjectContainer}>*/}
+      {/*    <img src={latestProject.image} alt="" />*/}
+      {/*  </div>*/}
+      {/*</section>*/}
 
       <section className={cl.sectionContainer}>
         <h3 className={cl.title}>
@@ -96,15 +96,15 @@ export default function Index() {
             also enjoyed <span>Cyberpunk 2077</span>, <span>Watch dogs 2</span>,{' '}
             <span>Valorant</span>, <span>Overwatch (1)</span>
           </p>
-          <p style={{ marginTop: '5px' }}>
+          <p>
             I also can't live without music, my favorites genre is Rap, and here
             is some of my favorite artists: <span>Kendrick lamar</span>,{' '}
             <span>JID</span>, <span>Tyler, the creator</span>,{' '}
             <span>Mick jenkins</span>, <span>MF DOOM</span>
           </p>
-          <p style={{ marginTop: '5px' }}>
+          <p>
             Lately I've been into TV series, here are some of the ones I've
-            watched recently: : <span>Arcane</span>, <span>Snowfall</span>,{' '}
+            watched recently: <span>Arcane</span>, <span>Snowfall</span>,{' '}
             <span>Love Death + Robots</span>, <span>Breaking bad</span>
           </p>
         </span>
