@@ -2,13 +2,10 @@ import type { MetaFunction } from '@remix-run/node';
 import { BasicPage } from '@/components/BasicPage';
 import cl from '#/index.module.scss';
 import { skills } from '@/common/constants/skills';
-import { projects } from '@/common/constants/projects';
 
 export const meta: MetaFunction = () => {
   return [{ title: 'Terminaate' }];
 };
-
-const latestProject = projects[0];
 
 export default function Index() {
   return (

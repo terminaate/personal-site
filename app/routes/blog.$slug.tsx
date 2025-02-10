@@ -19,13 +19,20 @@ export const meta: MetaFunction = () => {
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   const modules = import.meta.glob('/app/content/blog/**/*.mdx');
 
-  let match = {} as any;
+  let match = null;
 
   for (const [path, resolver] of Object.entries(modules)) {
     if (nameFromPath(path) === params.slug) {
       match = { path, resolver };
       break;
     }
+  }
+
+  if (!match) {
+    throw new Response(null, {
+      status: 404,
+      statusText: 'Not Found',
+    });
   }
 
   const postPromise = match?.resolver?.();
