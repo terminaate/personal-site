@@ -7,22 +7,17 @@ export const meta: MetaFunction = () => {
   return [{ title: 'Terminaate | Projects' }];
 };
 
-// const ProjectCard = () => {};
-
 export default function Projects() {
   return (
     <BasicPage className={cl.page}>
       {projects.map((project, index) => (
-        <div key={index} className={cl.projectCard}>
-          <img
-            className={cl.projectImage}
-            src={project.image}
-            alt={project.title}
-          />
-          <div className={cl.projectInfoContainer}>
-            <h2>{project.title}</h2>
-            <span>{project.description}</span>
-          </div>
+        <div
+          style={{ backgroundImage: `url(${project.image})` }}
+          key={index}
+          className={cl.projectCard}
+        >
+          <h2 className={cl.projectTitle}>{project.title}</h2>
+          <span className={cl.projectDescription}>{project.description}</span>
         </div>
       ))}
     </BasicPage>

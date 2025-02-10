@@ -18,9 +18,9 @@ export const Navbar = () => {
         Termina<span>a</span>te
       </Link>
       <div className={cl.navBar}>
-        {Object.entries(pages).map(([href, name]) => (
+        {Object.entries(pages).map(([href, name], index) => (
           <>
-            <Link to={href} key={href}>
+            <Link to={href} key={index}>
               {location.pathname === href
                 ? `[${name.slice(0, 1)}]${name.slice(1)}`
                 : name}

@@ -11,9 +11,7 @@ export default function Index() {
   return (
     <BasicPage className={cl.page}>
       <section className={cl.sectionContainer}>
-        <h3 className={cl.title}>
-          <span>About:</span>
-        </h3>
+        <h3 className={cl.title}>About:</h3>
         <span className={cl.text}>
           <p>
             Hey! I'm a young web developer from <span>Russia</span> who loves
@@ -33,19 +31,8 @@ export default function Index() {
         </span>
       </section>
 
-      {/*<section className={cl.sectionContainer}>*/}
-      {/*  <h3 className={cl.title}>*/}
-      {/*    <span>Latest project: </span>*/}
-      {/*  </h3>*/}
-      {/*  <div className={cl.latestProjectContainer}>*/}
-      {/*    <img src={latestProject.image} alt="" />*/}
-      {/*  </div>*/}
-      {/*</section>*/}
-
       <section className={cl.sectionContainer}>
-        <h3 className={cl.title}>
-          <span>Skills:</span>
-        </h3>
+        <h3 className={cl.title}>Skills:</h3>
         <div className={cl.skillsContainer}>
           <div className={cl.skills}>
             {Object.entries(skills).map(
@@ -71,9 +58,7 @@ export default function Index() {
       </section>
 
       <section className={cl.sectionContainer}>
-        <h3 className={cl.title}>
-          <span>Tools:</span>
-        </h3>
+        <h3 className={cl.title}>Tools:</h3>
         <span className={cl.text}>
           I'm primary using <code>`Lenovo Ideapad Gaming 3 15ARH05`</code> and{' '}
           <code>`Windows 11 (ReviOS)`</code> as my work setup, i also have my
@@ -83,9 +68,7 @@ export default function Index() {
       </section>
 
       <section className={cl.sectionContainer}>
-        <h3 className={cl.title}>
-          <span>Extra: </span>
-        </h3>
+        <h3 className={cl.title}>Extra:</h3>
         <span className={cl.text}>
           <p>
             I don't play a lot of video games anymore (I enjoy programming

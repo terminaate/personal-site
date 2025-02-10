@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  row-gap: 17px;
+  row-gap: 20px;
 
   .sectionContainer {
     display: flex;
@@ -21,16 +21,11 @@
       user-select: text !important;
       font-size: 20px;
       width: max-content;
-      position: relative;
 
       @media screen and (min-width: 850px) {
-        // bruh
-        span {
-          position: absolute;
-          right: -10%;
-          padding-right: 10px;
-          width: max-content;
-        }
+        position: absolute;
+        right: 100%;
+        margin-right: 10px;
       }
     }
 
