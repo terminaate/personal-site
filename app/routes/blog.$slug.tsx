@@ -1,10 +1,10 @@
 import cl from '#/blog-slug.module.scss';
 import { LoaderFunctionArgs } from '@remix-run/router';
 import { nameFromPath } from '@/common/utils/nameFromPath';
-import { renderToString } from 'react-dom/server';
 import { useLoaderData } from '@remix-run/react';
 import { BasicPage } from '@/components/BasicPage';
 import { MetaFunction } from '@remix-run/node';
+import { renderToString } from 'react-dom/server';
 
 type PostResponse = {
   post: string;
@@ -45,6 +45,18 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
             return (
               <a id={id} href={`#${id}`}>
                 <h2 className={'mdx-slug-link'}>{children}</h2>
+              </a>
+            );
+          },
+          a({ children, ...props }: any) {
+            return (
+              <a
+                className={'mdx-link'}
+                rel={'noreferrer'}
+                target={'_blank'}
+                {...props}
+              >
+                {children}
               </a>
             );
           },
