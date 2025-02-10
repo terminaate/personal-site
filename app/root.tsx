@@ -9,6 +9,8 @@ import type { LinksFunction } from '@remix-run/node';
 import { PropsWithChildren } from 'react';
 import './index.scss';
 import { Navbar } from '@/components/Navbar';
+import 'react-loading-skeleton/dist/skeleton.css';
+import { SkeletonTheme } from 'react-loading-skeleton';
 
 export const links: LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -63,9 +65,12 @@ export function Layout({ children }: PropsWithChildren) {
 
 export default function App() {
   return (
-    <>
+    <SkeletonTheme
+      baseColor={'var(--background-ui)'}
+      highlightColor={`var(--text-secondary)`}
+    >
       <Navbar />
       <Outlet />
-    </>
+    </SkeletonTheme>
   );
 }

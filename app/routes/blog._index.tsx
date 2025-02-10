@@ -1,9 +1,11 @@
-import type { MetaFunction } from '@remix-run/node';
+import { defer, MetaFunction } from '@remix-run/node';
 import { BasicPage } from '@/components/BasicPage';
 import cl from '#/blog.module.scss';
 import { getPosts } from '@/common/utils/getPosts';
-import { Link, useLoaderData } from '@remix-run/react';
+import { Await, Link, useLoaderData } from '@remix-run/react';
 import { Post } from '@/common/types/Post';
+import { Suspense } from 'react';
+import Skeleton from 'react-loading-skeleton';
 
 export const meta: MetaFunction = () => {
   return [{ title: 'Terminaate | Blog' }];
@@ -11,11 +13,17 @@ export const meta: MetaFunction = () => {
 
 export const loader = async () => {
   const modules = import.meta.glob('/app/content/blog/**/*.mdx');
-  const posts = (await getPosts(modules)).filter((post) => post.published);
+  const posts = getPosts(modules);
 
-  posts.sort((a, b) => +new Date(b.date) - +new Date(a.date));
+  return defer({
+    posts: posts.then((response) => {
+      response = response.filter((post) => post.published);
 
-  return Response.json(posts);
+      response.sort((a, b) => +new Date(b.date) - +new Date(a.date));
+
+      return response;
+    }),
+  });
 };
 
 const PostComponent = (props: Post) => {
@@ -30,20 +38,29 @@ const PostComponent = (props: Post) => {
   );
 };
 
-export default function Blog_index() {
-  const data = useLoaderData<Post[]>();
-
-  if (!data) {
-    return null;
-  }
+export default function Blog() {
+  const { posts: data } = useLoaderData<typeof loader>();
 
   return (
     <BasicPage className={cl.page}>
       <h3 className={cl.title}>Some of my notes and thoughts.</h3>
       <div className={cl.posts}>
-        {data.map((post, key) => (
-          <PostComponent {...post} key={key} />
-        ))}
+        <Suspense
+          fallback={
+            <>
+              <Skeleton className={cl.postContainer} />
+              <Skeleton className={cl.postContainer} />
+              <Skeleton className={cl.postContainer} />
+              <Skeleton className={cl.postContainer} />
+            </>
+          }
+        >
+          <Await resolve={data}>
+            {(posts) =>
+              posts.map((post, key) => <PostComponent {...post} key={key} />)
+            }
+          </Await>
+        </Suspense>
       </div>
     </BasicPage>
   );

@@ -1,6 +1,5 @@
 import cl from './Navbar.module.scss';
-import { useLocation } from 'react-router';
-import { Link } from '@remix-run/react';
+import { Link, useLocation } from '@remix-run/react';
 import { motion } from 'framer-motion';
 
 const pages: Record<string, string> = {

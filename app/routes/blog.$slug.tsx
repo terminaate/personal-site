@@ -1,19 +1,12 @@
 import cl from '#/blog-slug.module.scss';
 import { LoaderFunctionArgs } from '@remix-run/router';
 import { nameFromPath } from '@/common/utils/nameFromPath';
-import { useLoaderData } from '@remix-run/react';
+import { Await, useLoaderData } from '@remix-run/react';
 import { BasicPage } from '@/components/BasicPage';
-import { MetaFunction } from '@remix-run/node';
+import { defer, MetaFunction } from '@remix-run/node';
 import { renderToString } from 'react-dom/server';
-
-type PostResponse = {
-  post: string;
-  meta: {
-    title: string;
-    description: string;
-    type: string;
-  };
-};
+import { Suspense } from 'react';
+import Skeleton from 'react-loading-skeleton';
 
 export const meta: MetaFunction = () => {
   return [
@@ -35,10 +28,10 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     }
   }
 
-  const post = await match?.resolver?.();
+  const postPromise = match?.resolver?.();
 
-  return Response.json({
-    post: renderToString(
+  const renderedPost = postPromise.then((post: any) => {
+    return renderToString(
       post.default({
         components: {
           h2({ children, id }: any) {
@@ -62,33 +55,104 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
           },
         },
       }),
-    ),
+    );
+  });
+
+  return defer({
+    post: renderedPost,
     meta: {
-      title: post.frontmatter.name,
-      description: post.frontmatter.description,
-      type: 'article',
+      title: postPromise.then(async (post: any) => {
+        await new Promise((res) => setTimeout(res, 4500));
+
+        return post?.frontmatter?.name;
+      }),
+      description: postPromise.then(
+        (post: any) => post?.frontmatter?.description,
+      ),
     },
   });
 };
 
+const SkeletonPost = () => {
+  return (
+    <div className={'mdx-content'}>
+      <h2>
+        <Skeleton />
+      </h2>
+      <h3>
+        <Skeleton />
+      </h3>
+      <p>
+        <Skeleton />
+      </p>
+      <p>
+        <Skeleton />
+        <Skeleton />
+      </p>
+      <h2>
+        <Skeleton />
+      </h2>
+      <p>
+        <Skeleton />
+        <Skeleton />
+        <Skeleton />
+        <Skeleton />
+        <Skeleton />
+      </p>
+      <p>
+        <Skeleton />
+      </p>
+      <p>
+        <Skeleton />
+        <Skeleton />
+        <Skeleton />
+        <Skeleton />
+      </p>
+      <p>
+        <Skeleton />
+        <Skeleton />
+      </p>
+    </div>
+  );
+};
+
 export default function BlogSlug() {
-  const data = useLoaderData<PostResponse>();
-
-  if (!data) {
-    return null;
-  }
-
-  const { meta, post } = data;
-  const { title, description } = meta;
+  const data = useLoaderData<typeof loader>();
 
   return (
     <BasicPage className={cl.page}>
-      <h2>{title}</h2>
-      <h3>{description}</h3>
-      <div
-        className={'mdx-content'}
-        dangerouslySetInnerHTML={{ __html: post }}
-      />
+      <Suspense
+        fallback={
+          <h2>
+            <Skeleton />
+          </h2>
+        }
+      >
+        <Await resolve={data.meta.title}>{(title) => <h2>{title}</h2>}</Await>
+      </Suspense>
+
+      <Suspense
+        fallback={
+          <h3>
+            <Skeleton />
+          </h3>
+        }
+      >
+        <Await resolve={data.meta.description}>
+          {(description) => <h2>{description}</h2>}
+        </Await>
+      </Suspense>
+
+      <Suspense fallback={<SkeletonPost />}>
+        <Await resolve={data.post}>
+          {(post) => (
+            <div
+              className={'mdx-content'}
+              dangerouslySetInnerHTML={{ __html: post }}
+            />
+          )}
+        </Await>
+      </Suspense>
     </BasicPage>
   );
 }
