@@ -90,6 +90,12 @@ export default function Index() {
           </p>
         </span>
       </section>
+
+      <div className={cl.webRingLinks}>
+        <a href="https://ctp-webr.ing/terminaate/previous">[{'<'}]</a>
+        <a href="https://ctp-webr.ing/">Catppuccin webring</a>
+        <a href="https://ctp-webr.ing/terminaate/next">[{'>'}]</a>
+      </div>
     </BasicPage>
   );
 }
