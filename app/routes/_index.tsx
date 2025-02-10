@@ -101,8 +101,9 @@ export default function Index() {
           </p>
           <p>
             Lately I've been into TV series, here are some of the ones I've
-            watched recently: <span>Arcane</span>, <span>Snowfall</span>,{' '}
-            <span>Love Death + Robots</span>, <span>Breaking bad</span>
+            watched recently: <span>Arcane</span>, <span>Silicon valley</span>,{' '}
+            <span>Snowfall</span>, <span>Love Death + Robots</span>,{' '}
+            <span>Breaking bad</span>
           </p>
         </span>
       </section>

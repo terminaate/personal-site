@@ -2,10 +2,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 700px;
+  max-width: 700px;
+  width: 100%;
   z-index: 1;
   background-color: var(--background-primary);
   //border: 1px solid white;
+
+  @media screen and (max-width: 540px) {
+    flex-direction: column;
+    row-gap: 10px;
+  }
 
   .title {
     font-size: 30px;

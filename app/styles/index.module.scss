@@ -13,18 +13,24 @@
     position: relative;
     width: 100%;
 
+    @media screen and (max-width: 850px) {
+      flex-direction: column;
+    }
+
     .title {
       user-select: text !important;
       font-size: 20px;
       width: max-content;
       position: relative;
 
-      // bruh
-      span {
-        position: absolute;
-        right: -10%;
-        padding-right: 10px;
-        width: max-content;
+      @media screen and (min-width: 850px) {
+        // bruh
+        span {
+          position: absolute;
+          right: -10%;
+          padding-right: 10px;
+          width: max-content;
+        }
       }
     }
 
