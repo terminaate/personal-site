@@ -7,6 +7,7 @@ import { defer, MetaFunction } from '@remix-run/node';
 import { renderToString } from 'react-dom/server';
 import { Suspense } from 'react';
 import Skeleton from 'react-loading-skeleton';
+import { MDXModule } from 'mdx/types';
 
 export const meta: MetaFunction = () => {
   return [
@@ -35,20 +36,20 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     });
   }
 
-  const postPromise = match?.resolver?.();
+  const postPromise = match?.resolver?.() as Promise<MDXModule>;
 
-  const renderedPost = postPromise.then((post: any) => {
+  const renderedPost = postPromise.then((post) => {
     return renderToString(
       post.default({
         components: {
-          h2({ children, id }: any) {
+          h2({ children, id }) {
             return (
               <a id={id} href={`#${id}`}>
                 <h2 className={'mdx-slug-link'}>{children}</h2>
               </a>
             );
           },
-          a({ children, ...props }: any) {
+          a({ children, ...props }) {
             return (
               <a
                 className={'mdx-link'}

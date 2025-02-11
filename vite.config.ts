@@ -6,6 +6,7 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import rehypeSlug from 'rehype-slug';
+import { imagetools } from 'vite-imagetools';
 
 declare module '@remix-run/node' {
   interface Future {
@@ -19,6 +20,8 @@ export default defineConfig({
       remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
       rehypePlugins: [rehypePrettyCode, rehypeSlug],
     }),
+
+    imagetools(),
 
     remix({
       future: {
