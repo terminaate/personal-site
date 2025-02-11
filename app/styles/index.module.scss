@@ -101,48 +101,6 @@
         }
       }
     }
-
-    //.skillsContainer {
-    //  display: flex;
-    //  flex-direction: column;
-    //  row-gap: 3px;
-    //
-    //  > span {
-    //  }
-    //
-    //  .skills {
-    //    padding: 10px;
-    //    display: flex;
-    //    align-items: center;
-    //    gap: 5px;
-    //    flex-wrap: wrap;
-    //    border: 2px solid var(--background-ui)
-    //  }
-    //
-    //  //width: 100%;
-    //  //max-width: 700px;
-    //  //font-size: 17px;
-    //  //display: flex;
-    //  //align-items: center;
-    //  //flex-wrap: wrap;
-    //  //column-gap: 3px;
-    //  //
-    //}
-
-    .latestProjectContainer {
-      width: 70%;
-      height: fit-content;
-      border-radius: 10px;
-      border: 2px solid var(--background-ui);
-      //overflow: hidden;
-
-      img {
-        width: 100%;
-        //height: 100%;
-        //object-fit: cover;
-        border-radius: inherit;
-      }
-    }
   }
 
   .webRingLinks {
