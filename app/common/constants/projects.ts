@@ -1,5 +1,6 @@
 import { Project } from '@/common/types/Project';
 
+// TODO: get rid off imgur images and download it all back to content/projects folder
 export const projects: Project[] = [
   {
     link: 'https://refleep.vercel.app/',
