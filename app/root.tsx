@@ -6,7 +6,7 @@ import {
   ScrollRestoration,
 } from '@remix-run/react';
 import type { LinksFunction } from '@remix-run/node';
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useEffect } from 'react';
 import './index.scss';
 import { Navbar } from '@/components/Navbar';
 import 'react-loading-skeleton/dist/skeleton.css';
@@ -64,6 +64,11 @@ export function Layout({ children }: PropsWithChildren) {
 }
 
 export default function App() {
+  useEffect(() => {
+    // @info: fixing touch hover event
+    document.addEventListener('touchstart', function () {}, true);
+  }, []);
+
   return (
     <SkeletonTheme
       baseColor={'var(--background-ui)'}

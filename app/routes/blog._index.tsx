@@ -28,12 +28,10 @@ export const loader = async () => {
 
 const PostComponent = (props: Post) => {
   return (
-    <Link to={props.slug}>
-      <div className={cl.postContainer}>
-        <span className={cl.date}>{props.date}</span>
-        <h1 className={cl.title}>{props.name}</h1>
-        <span className={cl.description}>{props.description}</span>
-      </div>
+    <Link className={cl.postContainer} to={props.slug}>
+      <span className={cl.date}>{props.date}</span>
+      <h1 className={cl.title}>{props.name}</h1>
+      <span className={cl.description}>{props.description}</span>
     </Link>
   );
 };
