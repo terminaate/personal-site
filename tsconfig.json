@@ -36,6 +36,9 @@
       ],
       "#/*": [
         "./app/styles/*"
+      ],
+      "$/*": [
+        "./app/content/*"
       ]
     },
     // Vite takes care of building everything, not tsc.

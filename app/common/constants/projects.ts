@@ -1,13 +1,16 @@
 import { Project } from '@/common/types/Project';
+import refleepImg from '$/projects/refleep.png?webp&w=700&h=250&lossless&imagetools';
+import aurarpImg from '$/projects/aurarp.jpeg?webp&w=700&h=250&lossless&imagetools';
+import cybermpImg from '$/projects/cybermp.png?webp&w=700&h=250&lossless&imagetools';
+import canvasParticlesImg from '$/projects/canvas-particles.png?webp&w=700&h=250&lossless&position=top&imagetools';
 
-// TODO: get rid off imgur images and download it all back to content/projects folder
 export const projects: Project[] = [
   {
     link: 'https://refleep.vercel.app/',
     title: 'Refleep',
     description:
       'Refleep is a landing site for a website development studio, representing one of my initial experiences with Next.js',
-    image: 'https://i.imgur.com/Ec9Jw23.png',
+    image: refleepImg,
     tags: ['NextJS', 'Typescript', 'SCSS', 'hygen', 'husky'],
   },
 
@@ -25,7 +28,7 @@ export const projects: Project[] = [
       'Mobx',
       'Vite',
     ],
-    image: 'https://i.imgur.com/R3fg4f1.jpeg',
+    image: aurarpImg,
   },
 
   {
@@ -44,7 +47,7 @@ export const projects: Project[] = [
       'Redux toolkit',
       'Vite',
     ],
-    image: 'https://i.imgur.com/htJdzpv.png',
+    image: cybermpImg,
   },
 
   {
@@ -53,7 +56,7 @@ export const projects: Project[] = [
     title: 'Canvas particles',
     description:
       'The canvas particles are just for testing my canvas skills and just for fun. You can deeply tune the particles in real time. Written in vanilla Typescript.',
-    image: 'https://i.imgur.com/eV4hcph.png',
     tags: ['Typescript', 'Canvas', 'HTML', 'CSS'],
+    image: canvasParticlesImg,
   },
 ];
