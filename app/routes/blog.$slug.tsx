@@ -137,13 +137,13 @@ export default function BlogSlug() {
 
       <Suspense
         fallback={
-          <h3>
+          <span>
             <Skeleton />
-          </h3>
+          </span>
         }
       >
         <Await resolve={data.meta.description}>
-          {(description) => <h2>{description}</h2>}
+          {(description) => <span>{description}</span>}
         </Await>
       </Suspense>
 
