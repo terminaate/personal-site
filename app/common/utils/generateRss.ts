@@ -21,7 +21,7 @@ export const generateRss = (baseUrl: string, posts: Post[]) => {
         <title><![CDATA[${post.name}]]></title>
         <description><![CDATA[${post.description}]]></description>
         <pubDate>${new Date(post.date).toUTCString()}</pubDate>
-        <link>${baseUrl}/${post.slug}</link>
+        <link>${baseUrl}/blog/${post.slug}</link>
       </item>`,
       )
       .join('')}
