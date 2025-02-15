@@ -11,6 +11,7 @@ import './index.scss';
 import { Navbar } from '@/components/Navbar';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { SkeletonTheme } from 'react-loading-skeleton';
+import ogImageUrl from './assets/og-image.png?format=webp&w=1280&h=600&lossless&imagetools';
 
 export const links: LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -45,6 +46,15 @@ export function Layout({ children }: PropsWithChildren) {
         <meta name="language" content="English" />
         <meta name="revisit-after" content="2 days" />
         <meta name="author" content="Terminaate" />
+        <meta property="og:site_name" content="terminaate.site" />
+        <meta property="og:title" content="terminaate" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:description"
+          content="Hey! I'm a young web developer from Russia who loves building and designing for the web."
+        />
+        <meta property="og:url" content="https://terminaate.site" />
+        <meta property="og:image" content={ogImageUrl} />
 
         <script
           defer
