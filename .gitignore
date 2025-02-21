@@ -23,7 +23,3 @@ build
 *.njsproj
 *.sln
 *.sw?
-
-.env
-#.env.production
-*.production

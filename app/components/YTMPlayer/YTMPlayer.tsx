@@ -16,7 +16,7 @@ class YTMStore {
   constructor() {
     makeAutoObservable(this);
 
-    this.socket = io();
+    this.socket = io(import.meta.env.VITE_SERVER_URL);
 
     this.socket.on('connect', () => {
       console.log('Connected to server!');
@@ -48,8 +48,6 @@ class YTMStore {
           this.position = data.position ?? 0;
         }
       });
-
-      console.log('new data', data);
     });
   }
 
