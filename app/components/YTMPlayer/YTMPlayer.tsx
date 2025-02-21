@@ -48,8 +48,6 @@ class YTMStore {
           this.position = data.position ?? 0;
         }
       });
-
-      console.log('new data', data);
     });
   }
 
