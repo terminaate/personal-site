@@ -7,7 +7,6 @@ import remarkFrontmatter from 'remark-frontmatter';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import rehypeSlug from 'rehype-slug';
 import { imagetools } from 'vite-imagetools';
-import esbuild from 'esbuild';
 
 declare module '@remix-run/node' {
   interface Future {
@@ -31,24 +30,6 @@ export default defineConfig({
         v3_throwAbortReason: true,
         v3_singleFetch: true,
         v3_lazyRouteDiscovery: true,
-      },
-      buildEnd: async () => {
-        await esbuild
-          .build({
-            alias: { '~': './app' },
-            outfile: 'build/server/index.js',
-            entryPoints: ['server/index.ts'],
-            external: ['./build/server/*'],
-            platform: 'node',
-            format: 'esm',
-            packages: 'external',
-            bundle: true,
-            logLevel: 'info',
-          })
-          .catch((error: unknown) => {
-            console.error('Error building server:', error);
-            process.exit(1);
-          });
       },
     }),
     tsconfigPaths(),

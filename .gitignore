@@ -24,5 +24,6 @@ build
 *.sln
 *.sw?
 
-.env.production
+.env
+#.env.production
 *.production

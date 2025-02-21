@@ -12,6 +12,7 @@ import { Navbar } from '@/components/Navbar';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import ogImageUrl from './assets/og-image.png?format=webp&w=1280&h=600&lossless&imagetools';
+import { YTMPlayer } from '@/components/YTMPlayer';
 
 export const links: LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -86,6 +87,7 @@ export default function App() {
     >
       <Navbar />
       <Outlet />
+      <YTMPlayer />
     </SkeletonTheme>
   );
 }
