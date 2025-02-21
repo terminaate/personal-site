@@ -1,6 +1,8 @@
 import { createRequestHandler } from '@remix-run/express';
 import express from 'express';
+import type { ServerBuild } from '@remix-run/node';
 import 'dotenv/config';
+import { YTMCurrentState } from '@/common/types/YTM';
 import * as http from 'node:http';
 import { Server } from 'socket.io';
 
@@ -20,12 +22,12 @@ app.use(
 const server = http.createServer(app);
 const io = new Server(server);
 
-let lastData;
+let lastData: YTMCurrentState;
 
 io.on('connection', (socket) => {
   socket.emit('ytm:new-current-state', lastData ?? null);
 
-  socket.on('ytm:update-current-state', (data) => {
+  socket.on('ytm:update-current-state', (data: YTMCurrentState) => {
     lastData = data;
 
     if (socket.handshake.auth.secretKey !== process.env.YTM_UPDATE_KEY) {
@@ -39,9 +41,14 @@ io.on('connection', (socket) => {
   });
 });
 
+// GOD, MY EYES
 const build = viteDevServer
-  ? () => viteDevServer.ssrLoadModule('virtual:remix/server-build')
-  : await import('./build/server/index.js');
+  ? () =>
+      viteDevServer.ssrLoadModule(
+        'virtual:remix/server-build',
+      ) as Promise<ServerBuild>
+  : // @ts-ignore
+    ((await import('./build/server/index.js')) as ServerBuild);
 
 app.all('*', createRequestHandler({ build }));
 
