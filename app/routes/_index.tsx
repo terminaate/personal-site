@@ -45,6 +45,7 @@ export default function Index() {
                         <SkillIcon
                           size={25}
                           aria-label={name}
+                          title={name}
                           key={skillIndex}
                         />
                       ),

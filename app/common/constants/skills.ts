@@ -5,6 +5,7 @@ import {
   SiFigma,
   SiHtml5,
   SiJavascript,
+  SiLinux,
   SiMobx,
   SiMongodb,
   SiNestjs,
@@ -101,6 +102,10 @@ export const skills: Record<string, Skill[]> = {
     {
       name: 'Traefik',
       icon: SiTraefikproxy,
+    },
+    {
+      name: 'Linux',
+      icon: SiLinux,
     },
   ],
   databases: [
