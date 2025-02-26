@@ -109,7 +109,6 @@ export const YTMPlayer = observer(() => {
     }
   }, [ytmStore.mPosition]);
 
-  console.log('song', song);
   if (!song) {
     return null;
   }
