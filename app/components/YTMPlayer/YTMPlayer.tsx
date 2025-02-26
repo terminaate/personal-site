@@ -1,10 +1,13 @@
 import cl from './YTMPlayer.module.scss';
-import { makeAutoObservable, runInAction } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 import { observer } from 'mobx-react/src';
 import { io, Socket } from 'socket.io-client';
 import { Song, YTMCurrentState } from '@/common/types/YTM';
 import { useEffect, useState } from 'react';
+import { msToHuman } from '@/common/utils/msToHuman';
+import { enableStaticRendering } from 'mobx-react';
 
+// TODO: optimize, add requesting lastYTMData on server side, so we can show first ytm data as fast as we can
 class YTMStore {
   public song: Song | null = null;
   public isPlaying = false;
@@ -24,30 +27,12 @@ class YTMStore {
 
     this.socket.on('ytm:new-current-state', (data: YTMCurrentState) => {
       if (!data) {
-        runInAction(() => {
-          this.song = null;
-          this.isPlaying = false;
-          this.position = 0;
-          this.start = 0;
-        });
+        this.resetData();
 
         return;
       }
 
-      runInAction(() => {
-        if (data.song) {
-          this.song = data.song;
-          this.position = data.song.elapsedSeconds ?? 0;
-        }
-
-        if (data.isPlaying != null) {
-          this.isPlaying = data.isPlaying;
-        }
-
-        if (data.position && data.position !== this.position) {
-          this.position = data.position ?? 0;
-        }
-      });
+      this.setData(data);
     });
   }
 
@@ -66,16 +51,46 @@ class YTMStore {
 
     this.start = Date.now();
   }
+
+  setData(data: YTMCurrentState) {
+    if (data.song) {
+      this.song = data.song;
+      this.position = data.song.elapsedSeconds ?? 0;
+    }
+
+    if (data.isPlaying != null) {
+      this.isPlaying = data.isPlaying;
+    }
+
+    if (data.position && data.position !== this.position) {
+      this.position = data.position ?? 0;
+    }
+  }
+
+  resetData() {
+    this.song = null;
+    this.isPlaying = false;
+    this.position = 0;
+    this.start = 0;
+  }
 }
 
 const ytmStore = new YTMStore();
 
-function msToHuman(ms: number) {
-  const minutes = ms / 1000 / 60;
-  const m = Math.floor(minutes);
-  const s = Math.floor((minutes - m) * 60);
-  return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-}
+enableStaticRendering(true);
+
+export const loader = async () => {
+  const response = await fetch(
+    `${import.meta.env.VITE_SERVER_URL}/last-ytm-data`,
+  ).catch(() => null);
+
+  // eslint-disable-next-line no-unsafe-optional-chaining
+  const lastYTMData = (await response?.json()).catch(() => null);
+
+  // if (lastYTMData) {
+  //   ytmStore.setData(lastYTMData);
+  // }
+};
 
 export const YTMPlayer = observer(() => {
   const { song, isPlaying } = ytmStore;
@@ -94,6 +109,7 @@ export const YTMPlayer = observer(() => {
     }
   }, [ytmStore.mPosition]);
 
+  console.log('song', song);
   if (!song) {
     return null;
   }
