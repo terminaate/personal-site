@@ -1,20 +1,18 @@
 import {
   Links,
   Meta,
+  Outlet,
   Scripts,
   ScrollRestoration,
-  useLocation,
-  useOutlet,
 } from '@remix-run/react';
 import type { LinksFunction } from '@remix-run/node';
-import { PropsWithChildren, useEffect, useState } from 'react';
+import { PropsWithChildren, useEffect } from 'react';
 import './index.scss';
 import { Navbar } from '@/components/Navbar';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import ogImageUrl from './assets/og-image.png?format=webp&w=1280&h=600&lossless&imagetools';
 import { YTMPlayer } from '@/components/YTMPlayer';
-import { AnimatePresence } from 'framer-motion';
 
 export const links: LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -76,17 +74,7 @@ export function Layout({ children }: PropsWithChildren) {
   );
 }
 
-// @info: https://stackoverflow.com/questions/74190609/exit-animations-with-animatepresence-framer-motion-and-createbrowserrouter-r
-const AnimatedOutlet = () => {
-  const o = useOutlet();
-  const [outlet] = useState(o);
-
-  return outlet;
-};
-
 export default function App() {
-  const location = useLocation();
-
   useEffect(() => {
     // @info: fixing touch hover event
     document.addEventListener('touchstart', function () {}, true);
@@ -98,9 +86,7 @@ export default function App() {
       highlightColor={`var(--text-secondary)`}
     >
       <Navbar />
-      <AnimatePresence mode={'wait'}>
-        <AnimatedOutlet key={location.pathname} />
-      </AnimatePresence>
+      <Outlet />
       <YTMPlayer />
     </SkeletonTheme>
   );
