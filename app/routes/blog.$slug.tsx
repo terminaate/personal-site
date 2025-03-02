@@ -1,13 +1,14 @@
 import cl from '#/blog-slug.module.scss';
 import { LoaderFunctionArgs } from '@remix-run/router';
 import { nameFromPath } from '@/common/utils/nameFromPath';
-import { Await, useLoaderData } from '@remix-run/react';
+import { Await } from '@remix-run/react';
 import { BasicPage } from '@/components/BasicPage';
 import { defer, MetaFunction } from '@remix-run/node';
 import { renderToString } from 'react-dom/server';
 import { Suspense } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { MDXModule } from 'mdx/types';
+import { useAnimatedLoaderData } from '@/hooks/useAnimatedLoaderData';
 
 export const meta: MetaFunction = () => {
   return [
@@ -121,7 +122,7 @@ const SkeletonPost = () => {
 };
 
 export default function BlogSlug() {
-  const data = useLoaderData<typeof loader>();
+  const data = useAnimatedLoaderData<typeof loader>();
 
   return (
     <BasicPage className={cl.page}>

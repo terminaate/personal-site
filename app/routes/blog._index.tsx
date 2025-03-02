@@ -2,10 +2,11 @@ import { defer, MetaFunction } from '@remix-run/node';
 import { BasicPage } from '@/components/BasicPage';
 import cl from '#/blog.module.scss';
 import { getPosts } from '@/common/utils/getPosts';
-import { Await, Link, useLoaderData } from '@remix-run/react';
+import { Await, Link } from '@remix-run/react';
 import { Post } from '@/common/types/Post';
 import { Suspense } from 'react';
 import Skeleton from 'react-loading-skeleton';
+import { useAnimatedLoaderData } from '@/hooks/useAnimatedLoaderData';
 
 export const meta: MetaFunction = () => {
   return [{ title: 'Terminaate | Blog' }];
@@ -37,7 +38,7 @@ const PostComponent = (props: Post) => {
 };
 
 export default function Blog() {
-  const { posts: data } = useLoaderData<typeof loader>();
+  const { posts: data } = useAnimatedLoaderData<typeof loader>();
 
   return (
     <BasicPage className={cl.page}>
