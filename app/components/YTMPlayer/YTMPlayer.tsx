@@ -5,7 +5,6 @@ import { io, Socket } from 'socket.io-client';
 import { Song, YTMCurrentState } from '@/common/types/YTM';
 import { useEffect, useState } from 'react';
 import { msToHuman } from '@/common/utils/msToHuman';
-import { enableStaticRendering } from 'mobx-react';
 
 // TODO: optimize, add requesting lastYTMData on server side, so we can show first ytm data as fast as we can
 class YTMStore {
@@ -77,20 +76,7 @@ class YTMStore {
 
 const ytmStore = new YTMStore();
 
-enableStaticRendering(true);
-
-export const loader = async () => {
-  const response = await fetch(
-    `${import.meta.env.VITE_SERVER_URL}/last-ytm-data`,
-  ).catch(() => null);
-
-  // eslint-disable-next-line no-unsafe-optional-chaining
-  const lastYTMData = (await response?.json()).catch(() => null);
-
-  // if (lastYTMData) {
-  //   ytmStore.setData(lastYTMData);
-  // }
-};
+// enableStaticRendering(true);
 
 export const YTMPlayer = observer(() => {
   const { song, isPlaying } = ytmStore;
@@ -110,6 +96,7 @@ export const YTMPlayer = observer(() => {
   }, [ytmStore.mPosition]);
 
   if (!song) {
+    console.log('song is', song);
     return null;
   }
 
