@@ -3,6 +3,7 @@ import refleepImg from '$/projects/refleep.png?webp&w=700&h=250&lossless&imageto
 import aurarpImg from '$/projects/aurarp.jpeg?webp&w=700&h=250&lossless&imagetools';
 import cybermpImg from '$/projects/cybermp.png?webp&w=700&h=250&lossless&imagetools';
 import canvasParticlesImg from '$/projects/canvas-particles.png?webp&w=700&h=250&lossless&position=top&imagetools';
+import discordBannersImg from '$/projects/discord-banners.png?webp&w=700&h=250&lossless&imagetools';
 
 export const projects: Project[] = [
   {
@@ -12,6 +13,15 @@ export const projects: Project[] = [
       'Refleep is a landing site for a website development studio, representing one of my initial experiences with Next.js',
     image: refleepImg,
     tags: ['NextJS', 'Typescript', 'SCSS', 'hygen', 'husky'],
+  },
+
+  {
+    link: 'https://discord-banners.terminaate.site',
+    title: 'Discord banners',
+    description:
+      'Service that provides image of your discord profile that you can paste anywhere',
+    image: discordBannersImg,
+    tags: ['React', 'Discord.JS', 'Express', 'Node-Canvas'],
   },
 
   {
