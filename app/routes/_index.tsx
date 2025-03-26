@@ -68,26 +68,28 @@ export default function Index() {
         </span>
       </section>
 
+      <code style={{ color: 'yellow', width: '100%' }}>
+        // TODO: redesign section bellow
+      </code>
       <section className={cl.sectionContainer}>
         <h3 className={cl.title}>Extra:</h3>
         <span className={cl.text}>
           <p>
-            I don't play a lot of video games anymore (I enjoy programming
-            more), but I used to be pretty into <span>Minecraft</span>. I've
-            also enjoyed <span>Cyberpunk 2077</span>, <span>Watch dogs 2</span>,{' '}
-            <span>Valorant</span>, <span>Overwatch (1)</span>
+            I don’t game much anymore (I prefer programming), but I’ve enjoyed{' '}
+            <code>Cyberpunk 2077</code>, <code>Watch Dogs 2</code>,{' '}
+            <code>Valorant</code>, and <code>Overwatch</code>.
           </p>
           <p>
-            I also can't live without music, my favorites genre is Rap, and here
-            is some of my favorite artists: <span>Kendrick lamar</span>,{' '}
-            <span>JID</span>, <span>Tyler, the creator</span>,{' '}
-            <span>Mick jenkins</span>, <span>MF DOOM</span>
+            Music is essential to me—especially Rap. Some favorites:{' '}
+            <code>Kendrick Lamar</code>, <code>JID</code>,{' '}
+            <code>Tyler, the Creator</code>, <code>Mick Jenkins</code>, and{' '}
+            <code>MF DOOM</code>.
           </p>
           <p>
-            Lately I've been into TV series, here are some of the ones I've
-            watched recently: <span>Arcane</span>, <span>Silicon valley</span>,{' '}
-            <span>Snowfall</span>, <span>Love Death + Robots</span>,{' '}
-            <span>Breaking bad</span>
+            Lately, I’ve been into TV series. Recent watches:{' '}
+            <code>Avatar the last airbender</code>,<code>Arcane</code>,{' '}
+            <code>Silicon Valley</code>, <code>Snowfall</code>,{' '}
+            <code>Love, Death + Robots</code>, and <code>Breaking Bad</code>.
           </p>
         </span>
       </section>
