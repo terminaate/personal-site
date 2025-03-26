@@ -2,6 +2,7 @@ import type { MetaFunction } from '@remix-run/node';
 import { BasicPage } from '@/components/BasicPage';
 import cl from '#/index.module.scss';
 import { skills } from '@/common/constants/skills';
+import { Todo } from '@/components/Todo';
 
 export const meta: MetaFunction = () => {
   return [{ title: 'Terminaate' }];
@@ -68,9 +69,7 @@ export default function Index() {
         </span>
       </section>
 
-      <code style={{ color: 'yellow', width: '100%' }}>
-        // TODO: redesign section bellow
-      </code>
+      <Todo>// TODO: redesign section below</Todo>
       <section className={cl.sectionContainer}>
         <h3 className={cl.title}>Extra:</h3>
         <span className={cl.text}>
