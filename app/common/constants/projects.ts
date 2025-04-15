@@ -42,7 +42,7 @@ export const projects: Project[] = [
   },
 
   {
-    link: 'https://discord.gg/cybermp',
+    link: 'https://cybermp.org',
     title: 'CyberMP',
     description:
       'CyberMP is a major modification of Cyberpunk 2077 that adds a multiplayer platform to the game. I created the launcher, website, and server manager website for this project.',
