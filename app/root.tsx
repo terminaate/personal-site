@@ -9,9 +9,9 @@ import type { LinksFunction } from '@remix-run/node';
 import { PropsWithChildren, useEffect } from 'react';
 import './index.scss';
 import { Navbar } from '@/components/Navbar';
-import 'react-loading-skeleton/dist/skeleton.css';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import ogImageUrl from './assets/og-image.png?format=webp&w=1280&h=600&lossless&imagetools';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export const links: LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },

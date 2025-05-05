@@ -19,13 +19,11 @@ export const Navbar = () => {
       </Link>
       <div className={cl.navBar}>
         {Object.entries(pages).map(([href, name], index) => (
-          <>
-            <Link to={href} key={index}>
-              {location.pathname === href
-                ? `[${name.slice(0, 1)}]${name.slice(1)}`
-                : name}
-            </Link>
-          </>
+          <Link to={href} key={index}>
+            {location.pathname === href
+              ? `[${name.slice(0, 1)}]${name.slice(1)}`
+              : name}
+          </Link>
         ))}
       </div>
     </motion.nav>
