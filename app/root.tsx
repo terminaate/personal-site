@@ -1,17 +1,19 @@
 import {
   Links,
   Meta,
-  Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
+  useOutlet,
 } from '@remix-run/react';
 import type { LinksFunction } from '@remix-run/node';
-import { PropsWithChildren, useEffect } from 'react';
+import { PropsWithChildren, useEffect, useState } from 'react';
 import './index.scss';
 import { Navbar } from '@/components/Navbar';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import ogImageUrl from './assets/og-image.png?format=webp&w=1280&h=600&lossless&imagetools';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export const links: LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -73,7 +75,16 @@ export function Layout({ children }: PropsWithChildren) {
   );
 }
 
+const AnimatedOutlet = () => {
+  const outlet = useOutlet();
+  const [o] = useState(outlet);
+
+  return o;
+};
+
 export default function App() {
+  const location = useLocation();
+
   useEffect(() => {
     // @info: fixing touch hover event
     document.addEventListener('touchstart', function () {}, true);
@@ -84,8 +95,12 @@ export default function App() {
       baseColor={'var(--background-ui)'}
       highlightColor={`var(--text-secondary)`}
     >
-      <Navbar />
-      <Outlet />
+      <AnimatePresence mode={'wait'}>
+        <motion.div className={'root'} layout={'position'}>
+          <Navbar />
+          <AnimatedOutlet key={location.pathname} />
+        </motion.div>
+      </AnimatePresence>
       {/*<ClientOnly fallback={null}>{() => <YTMPlayer />}</ClientOnly>*/}
     </SkeletonTheme>
   );

@@ -13,7 +13,7 @@ export const Navbar = () => {
   const location = useLocation();
 
   return (
-    <motion.nav className={cl.navBarContainer}>
+    <motion.nav layout className={cl.navBarContainer}>
       <Link to={'/'} className={cl.title}>
         Termina<span>a</span>te
       </Link>
