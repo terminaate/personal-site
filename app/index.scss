@@ -6,7 +6,6 @@
   box-sizing: border-box;
   scrollbar-width: 2px;
   scrollbar-color: var(--text-secondary) none;
-  //border: 1px solid white;
 }
 
 :root {
@@ -20,10 +19,8 @@
   --text-secondary: rgba(255, 255, 255, 0.5);
   --text-inactive: rgba(255, 255, 255, 0.1);
   --text-green: #00fdcf;
-  --red: red;
-  --green: #54d254;
   --font-primary: "Atkinson Hyperlegible", serif;
-  --font-secondary: monospace;
+  --font-secondary: "Source Code Pro", monospace;
 }
 
 body {
