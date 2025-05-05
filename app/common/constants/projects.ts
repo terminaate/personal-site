@@ -1,9 +1,9 @@
 import { Project } from '@/common/types/Project';
-import refleepImg from '$/projects/refleep.png?webp&w=700&h=250&lossless&imagetools';
-import aurarpImg from '$/projects/aurarp.jpeg?webp&w=700&h=250&lossless&imagetools';
-import cybermpImg from '$/projects/cybermp.png?webp&w=700&h=250&lossless&imagetools';
-import canvasParticlesImg from '$/projects/canvas-particles.png?webp&w=700&h=250&lossless&position=top&imagetools';
-import discordBannersImg from '$/projects/discord-banners.png?webp&w=700&h=250&lossless&imagetools';
+import refleepImg from '$/projects/refleep.png?webp&w=700&h=300&lossless&imagetools';
+import aurarpImg from '$/projects/aurarp.jpeg?webp&w=700&h=300&lossless&imagetools';
+import cybermpImg from '$/projects/cybermp.png?webp&w=700&h=300&lossless&imagetools';
+import canvasParticlesImg from '$/projects/canvas-particles.png?webp&w=700&h=300&lossless&position=top&imagetools';
+import discordBannersImg from '$/projects/discord-banners.png?webp&w=700&h=300&lossless&imagetools';
 
 export const projects: Project[] = [
   {
