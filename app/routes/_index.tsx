@@ -2,7 +2,7 @@ import type { MetaFunction } from '@remix-run/node';
 import { BasicPage } from '@/components/BasicPage';
 import cl from '#/index.module.scss';
 import { skills } from '@/common/constants/skills';
-import { Todo } from '@/components/Todo';
+import { Link } from '@remix-run/react';
 
 export const meta: MetaFunction = () => {
   return [{ title: 'Terminaate' }];
@@ -63,35 +63,41 @@ export default function Index() {
         <h3 className={cl.title}>Tools:</h3>
         <span className={cl.text}>
           I'm primary using <code>`Lenovo Ideapad Gaming 3 15ARH05`</code> and{' '}
-          <code>`Windows 11 (ReviOS)`</code> as my work setup, i also have my
-          own home server that based on my old phone{' '}
-          <code>`Samsung galaxy A50`</code>
+          <code>`NixOS`</code>/<code>`Windows 11 (ReviOS)`</code> as my work
+          setup,{' '}
+          <Link
+            style={{ textDecoration: 'underline' }}
+            to={'/blog/home-server-creation'}
+          >
+            i also have my own home server that based on my old phone{' '}
+            <code>`Samsung galaxy A50`</code>
+          </Link>
         </span>
       </section>
 
-      <Todo>// TODO: redesign section below</Todo>
-      <section className={cl.sectionContainer}>
-        <h3 className={cl.title}>Extra:</h3>
-        <span className={cl.text}>
-          <p>
-            I don’t game much anymore (I prefer programming), but I’ve enjoyed{' '}
-            <code>Cyberpunk 2077</code>, <code>Watch Dogs 2</code>,{' '}
-            <code>Valorant</code>, and <code>Overwatch</code>.
-          </p>
-          <p>
-            Music is essential to me—especially Rap. Some favorites:{' '}
-            <code>Kendrick Lamar</code>, <code>JID</code>,{' '}
-            <code>Tyler, the Creator</code>, <code>Mick Jenkins</code>, and{' '}
-            <code>MF DOOM</code>.
-          </p>
-          <p>
-            Lately, I’ve been into TV series. Recent watches:{' '}
-            <code>Avatar the last airbender</code>,<code>Arcane</code>,{' '}
-            <code>Silicon Valley</code>, <code>Snowfall</code>,{' '}
-            <code>Love, Death + Robots</code>, and <code>Breaking Bad</code>.
-          </p>
-        </span>
-      </section>
+      {/*<Todo>// TODO: redesign section below</Todo>*/}
+      {/*<section className={cl.sectionContainer}>*/}
+      {/*  <h3 className={cl.title}>Extra:</h3>*/}
+      {/*  <span className={cl.text}>*/}
+      {/*    <p>*/}
+      {/*      I don’t game much anymore (I prefer programming), but I’ve enjoyed{' '}*/}
+      {/*      <code>Cyberpunk 2077</code>, <code>Watch Dogs 2</code>,{' '}*/}
+      {/*      <code>Valorant</code>, and <code>Overwatch</code>.*/}
+      {/*    </p>*/}
+      {/*    <p>*/}
+      {/*      Music is essential to me—especially Rap. Some favorites:{' '}*/}
+      {/*      <code>Kendrick Lamar</code>, <code>JID</code>,{' '}*/}
+      {/*      <code>Tyler, the Creator</code>, <code>Mick Jenkins</code>, and{' '}*/}
+      {/*      <code>MF DOOM</code>.*/}
+      {/*    </p>*/}
+      {/*    <p>*/}
+      {/*      Lately, I’ve been into TV series. Recent watches:{' '}*/}
+      {/*      <code>Avatar the last airbender</code>,<code>Arcane</code>,{' '}*/}
+      {/*      <code>Silicon Valley</code>, <code>Snowfall</code>,{' '}*/}
+      {/*      <code>Love, Death + Robots</code>, and <code>Breaking Bad</code>.*/}
+      {/*    </p>*/}
+      {/*  </span>*/}
+      {/*</section>*/}
 
       <div className={cl.webRingLinks}>
         <a href="https://ctp-webr.ing/terminaate/previous">[{'<'}]</a>
