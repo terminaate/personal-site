@@ -1,0 +1,51 @@
+---
+import '../styles/global.css';
+import Nav from '../components/nav.astro';
+import {ClientRouter} from 'astro:transitions';
+
+interface Props {
+    title?: string;
+    nav?: boolean;
+}
+
+const {title, nav = true} = Astro.props;
+
+const pageTitle = title ? `Terminaate | ${title}` : 'Terminaate';
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+    <title>{pageTitle}</title>
+    <ClientRouter/>
+</head>
+<body>
+<div class="root">
+    {nav && (
+            <Nav/>
+    )}
+    <main>
+        <slot/>
+    </main>
+</div>
+</body>
+</html>
+
+<style>
+    .root {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: row;
+        height: 100%;
+        width: 100%;
+    }
+
+    main {
+        width: 50%;
+        padding-inline: 30px;
+    }
+</style>

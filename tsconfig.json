@@ -1,47 +1,11 @@
 {
-  "include": [
-    "**/*.ts",
-    "**/*.d.ts",
-    "**/*.tsx",
-    "**/.server/**/*.ts",
-    "**/.server/**/*.tsx",
-    "**/.client/**/*.ts",
-    "**/.client/**/*.tsx"
-  ],
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
   "compilerOptions": {
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ES2022"
-    ],
-    "types": [
-      "@remix-run/node",
-      "vite/client"
-    ],
-    "isolatedModules": true,
-    "esModuleInterop": true,
     "jsx": "react-jsx",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "resolveJsonModule": true,
-    "target": "ES2022",
-    "strict": true,
-    "allowJs": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./app/*"
-      ],
-      "#/*": [
-        "./app/styles/*"
-      ],
-      "$/*": [
-        "./app/content/*"
-      ]
-    },
-    // Vite takes care of building everything, not tsc.
-    "noEmit": true
+    "jsxImportSource": "preact",
+    "strictNullChecks": true,
+    "allowJs": true
   }
 }

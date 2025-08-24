@@ -1,0 +1,59 @@
+---
+const links = [
+  {
+    name: 'index.tsx',
+    path: '/',
+  },
+  {
+    name: 'projects.tsx',
+    path: '/projects',
+  },
+  {
+    name: 'music.tsx',
+    path: '/music',
+  },
+  {
+    name: 'blog.tsx',
+    path: '/blog',
+  },
+  {
+    name: 'contacts.tsx',
+    path: '/contacts',
+  },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav>
+  {links.map((link) => (
+    <a data-active={currentPath === link.path} href={link.path}>{link.name}</a>
+  ))}
+</nav>
+
+<style>
+  nav {
+    width: fit-content;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 5px;
+    row-gap: 20px;
+
+    a {
+      color: var(--text-primary);
+      font-size: clamp(14px, 1vw, 20px);
+      transition: 0.3s color;
+      font-family: monospace !important;
+
+      &[data-active="false"] {
+        color: #828282;
+      }
+
+      &:hover {
+        color: var(--text-primary);
+      }
+    }
+  }
+</style>

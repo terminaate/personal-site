@@ -1,4 +1,2 @@
-*.svg
-*.png
-*.d.ts
-**/assets
+*.md
+*.mdx
