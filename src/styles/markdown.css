@@ -1,0 +1,56 @@
+.markdown-block {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+
+    * {
+        font-family: var(--font-primary);
+    }
+
+    p {
+        /*margin-top: 20px;*/
+        font-size: clamp(14px, 1vw, 20px);
+        color: var(--text-secondary);
+    }
+
+    code {
+        background: var(--background-secondary);
+        padding-inline: 5px;
+    }
+
+    strong {
+        text-shadow: 0 0 10px #fff;
+        color: var(--text-primary)
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        &:not(:first-child) {
+            margin-top: 10px;
+        }
+    }
+
+    h1 {
+        font-size: clamp(25px, 1vw, 30px);
+    }
+
+
+    a::before {
+        content: "[";
+    }
+
+    a::after {
+        content: "]";
+    }
+
+    blockquote {
+        padding-left: 10px;
+        /*padding-block: 5px;*/
+        font-style: italic;
+        border-left: 5px solid var(--background-secondary);
+    }
+
+    sub {
+        color: var(--text-secondary);
+    }
+}
+
