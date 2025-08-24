@@ -4,10 +4,11 @@ import { defineCollection, z } from 'astro:content';
 
 // 3. Define your collection(s)
 const posts = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/posts' }),
   schema: z.object({
     // layout: z.string().optional(),
     title: z.string(),
+    description: z.string(),
     published: z.boolean(),
     date: z.date(),
     thumbnail: z.string().optional(),
