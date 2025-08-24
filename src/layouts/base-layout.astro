@@ -1,51 +1,59 @@
 ---
 import '../styles/global.css';
 import Nav from '../components/nav.astro';
-import {ClientRouter} from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
-    title?: string;
-    nav?: boolean;
+  title?: string;
+  nav?: boolean;
 }
 
-const {title, nav = true} = Astro.props;
+const { title, nav = true } = Astro.props;
 
 const pageTitle = title ? `Terminaate | ${title}` : 'Terminaate';
 ---
 
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width"/>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{pageTitle}</title>
-    <ClientRouter/>
-</head>
-<body>
-<div class="root">
-    {nav && (
-            <Nav/>
-    )}
-    <main>
-        <slot/>
-    </main>
-</div>
-</body>
+    <ClientRouter />
+  </head>
+  <body>
+    <div class="root">
+      {nav && <Nav transition:persist />}
+      <main transition:name="page" transition:animate="fade">
+        <slot />
+      </main>
+    </div>
+  </body>
 </html>
 
 <style>
-    .root {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        flex-direction: row;
-        height: 100%;
-        width: 100%;
-    }
+  .root {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    gap: 20px;
 
-    main {
-        width: 50%;
-        padding-inline: 30px;
+    @media screen and (max-width: 800px) {
+      flex-direction: column;
+      align-items: center;
     }
+  }
+
+  main {
+    width: 50%;
+    padding-inline: 15px;
+
+    @media screen and (max-width: 800px) {
+      width: 100%;
+    }
+  }
 </style>

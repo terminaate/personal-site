@@ -26,9 +26,13 @@ const currentPath = Astro.url.pathname;
 ---
 
 <nav>
-  {links.map((link) => (
-    <a data-active={currentPath === link.path} href={link.path}>{link.name}</a>
-  ))}
+  {
+    links.map((link) => (
+      <a data-active={currentPath === link.path} href={link.path}>
+        {link.name}
+      </a>
+    ))
+  }
 </nav>
 
 <style>
@@ -39,7 +43,14 @@ const currentPath = Astro.url.pathname;
     flex-direction: column;
     justify-content: space-between;
     padding-top: 5px;
-    row-gap: 20px;
+    gap: 20px;
+
+    @media screen and (max-width: 800px) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: left;
+      padding-inline: 15px;
+    }
 
     a {
       color: var(--text-primary);
@@ -47,7 +58,7 @@ const currentPath = Astro.url.pathname;
       transition: 0.3s color;
       font-family: monospace !important;
 
-      &[data-active="false"] {
+      &[data-active='false'] {
         color: #828282;
       }
 

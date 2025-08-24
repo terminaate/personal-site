@@ -40,14 +40,18 @@ const { Content } = await render(post);
       }
 
       &:after {
-        content: "#";
+        content: '#';
         position: absolute;
         left: -4%;
       }
     }
 
-    .mdx-link {
-      text-decoration: underline;
+    a::before {
+      content: '[';
+    }
+
+    a::after {
+      content: ']';
     }
 
     h1,
@@ -95,10 +99,9 @@ const { Content } = await render(post);
       }
     }
 
-
     pre {
       font-family: var(--font-secondary);
-      background: var(--bg-2) !important;
+      //background: var(--bg-2) !important;
       padding: 0.75rem;
       overflow-x: auto;
       font-size: 1rem;
@@ -135,5 +138,4 @@ const { Content } = await render(post);
       border-radius: 5px;
     }
   }
-
 </style>

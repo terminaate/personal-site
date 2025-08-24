@@ -6,15 +6,20 @@ import { defineCollection, z } from 'astro:content';
 const posts = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/posts' }),
   schema: z.object({
-    // layout: z.string().optional(),
     title: z.string(),
-    description: z.string(),
+    description: z.string().optional(),
     published: z.boolean(),
     date: z.date(),
-    thumbnail: z.string().optional(),
-    // body: z.string(),
+  }),
+});
+
+const projects = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: './src/content/projects' }),
+  schema: z.object({
+    name: z.string(),
+    description: z.string().optional(),
   }),
 });
 
 // 4. Export a single `collections` object to register your collection(s)
-export const collections = { posts };
+export const collections = { posts, projects };

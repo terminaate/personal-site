@@ -2,20 +2,28 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/base-layout.astro';
 
-const posts = await getCollection('posts');
+const posts = (await getCollection('posts')).sort(
+  (a, b) => +b.data.date - +a.data.date,
+);
+
+const formatDate = (date: Date) => {
+  return `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;
+};
 ---
 
 <BaseLayout title="Blog">
   <div class="posts">
-    {posts.map((o) => (
+    {
+      posts.map((o) => (
         <a href={`/blog/${o.id}`} class="post">
-          <span class="date">{o.data.date.getDate()}-{o.data.date.getMonth()}-{o.data.date.getFullYear()}</span>
+          <span class="date">{formatDate(o.data.date)}</span>
           <div class="post-info">
             <span class="title">{o.data.title}</span>
             <span class="desc">{o.data.description}</span>
           </div>
         </a>
-    ))}
+      ))
+    }
   </div>
 </BaseLayout>
 
@@ -23,7 +31,7 @@ const posts = await getCollection('posts');
   .posts {
     display: flex;
     flex-direction: column;
-    row-gap: 10px;
+    row-gap: 30px;
 
     .post {
       text-decoration: none;
@@ -37,6 +45,7 @@ const posts = await getCollection('posts');
         font-family: var(--font-secondary);
         color: var(--text-secondary);
         font-size: 17px;
+        width: max-content !important;
         //margin-top: 5px;
       }
 
@@ -59,6 +68,7 @@ const posts = await getCollection('posts');
           line-height: 100%;
           font-weight: 550;
           font-size: 18px;
+          color: var(--text-secondary);
         }
       }
     }

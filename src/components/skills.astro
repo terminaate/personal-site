@@ -1,0 +1,180 @@
+---
+import { Icon } from 'astro-icon/components';
+
+type Skill = {
+  name: string;
+  icon: string;
+};
+
+const skills: Record<string, Skill[]> = {
+  core: [
+    {
+      name: 'JS',
+      icon: 'simple-icons:javascript',
+    },
+    {
+      name: 'TS',
+      icon: 'simple-icons:typescript',
+    },
+    {
+      name: 'HTML',
+      icon: 'simple-icons:html5',
+    },
+    {
+      name: 'CSS',
+      icon: 'simple-icons:css3',
+    },
+    {
+      name: 'SASS',
+      icon: 'simple-icons:sass',
+    },
+    {
+      name: 'Tailwind',
+      icon: 'simple-icons:tailwindcss',
+    },
+  ],
+  frameworks: [
+    {
+      name: 'React',
+      icon: 'simple-icons:react',
+    },
+    {
+      name: 'Next',
+      icon: 'simple-icons:nextdotjs',
+    },
+    {
+      name: 'Astro',
+      icon: 'simple-icons:astro',
+    },
+    {
+      name: 'Nest',
+      icon: 'simple-icons:nestjs',
+    },
+    {
+      name: 'Express',
+      icon: 'simple-icons:express',
+    },
+  ],
+  bundlers: [
+    {
+      name: 'Webpack',
+      icon: 'simple-icons:webpack',
+    },
+    {
+      name: 'Vite',
+      icon: 'simple-icons:vite',
+    },
+    {
+      name: 'ESBuild',
+      icon: 'simple-icons:esbuild',
+    },
+  ],
+  tools: [
+    {
+      name: 'Webstorm',
+      icon: 'simple-icons:webstorm',
+    },
+    {
+      name: 'VSCode',
+      icon: 'simple-icons:visualstudiocode',
+    },
+    {
+      name: 'Figma',
+      icon: 'simple-icons:figma',
+    },
+  ],
+  devops: [
+    {
+      name: 'Docker',
+      icon: 'simple-icons:docker',
+    },
+    {
+      name: 'Nginx',
+      icon: 'simple-icons:nginx',
+    },
+    {
+      name: 'Traefik',
+      icon: 'simple-icons:traefikproxy',
+    },
+    {
+      name: 'Linux',
+      icon: 'simple-icons:linux',
+    },
+  ],
+  databases: [
+    {
+      name: 'PostgreSQL',
+      icon: 'simple-icons:postgresql',
+    },
+    {
+      name: 'SQLite',
+      icon: 'simple-icons:sqlite',
+    },
+    {
+      name: 'MongoDB',
+      icon: 'simple-icons:mongodb',
+    },
+  ],
+  'state managers': [
+    {
+      name: 'Redux',
+      icon: 'simple-icons:redux',
+    },
+    {
+      name: 'Mobx',
+      icon: 'simple-icons:mobx',
+    },
+  ],
+};
+---
+
+<div class="container">
+  {
+    Object.entries(skills).map(([category, skills]) => (
+      <div class="category">
+        <span class="category-name">{category}</span>
+        <div class="skills">
+          {skills.map((skill) => (
+            <Icon
+              name={skill.icon}
+              size={25}
+              aria-label={skill.name}
+              title={skill.name}
+            />
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    .category {
+      display: flex;
+      flex-direction: column;
+      row-gap: 3px;
+
+      .category-name {
+        font-family: var(--font-secondary);
+        font-size: 16px;
+      }
+
+      .skills {
+        width: fit-content;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        flex-wrap: wrap;
+        border: 3px solid var(--background-secondary);
+        //border: 2px solid var(--background-ui);
+      }
+    }
+  }
+</style>
