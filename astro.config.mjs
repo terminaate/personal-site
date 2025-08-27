@@ -4,7 +4,8 @@ import { defineConfig } from 'astro/config';
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 import mdx from '@astrojs/mdx';
 import icon from 'astro-icon';
-import node from '@astrojs/node';
+
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,7 +18,5 @@ export default defineConfig({
 
   integrations: [mdx(), icon()],
 
-  adapter: node({
-    mode: 'standalone',
-  }),
+  adapter: vercel(),
 });
