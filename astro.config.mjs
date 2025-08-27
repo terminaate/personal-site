@@ -18,7 +18,13 @@ export default defineConfig({
     rehypePlugins: [rehypeAccessibleEmojis],
   },
 
-  integrations: [mdx(), icon(), decapCmsOauth()],
+  integrations: [
+    mdx(),
+    icon(),
+    decapCmsOauth({
+      decapCMSSrcUrl: 'https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js',
+    }),
+  ],
 
   adapter: vercel(),
 });
