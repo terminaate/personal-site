@@ -1,5 +1,6 @@
 {
   "name": "Discord Banners",
+  "order": 1,
   "description": "Service that provides image of your discord profile that you can paste anywhere",
   "githubLink": "https://github.com/terminaate/discord-banners",
   "link": "https://discord-banners.terminaate.site"

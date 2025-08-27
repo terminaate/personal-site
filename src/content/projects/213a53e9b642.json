@@ -1,6 +1,7 @@
 {
   "name": "Canvas Particles",
-  "description": "These canvas particles were created purely for fun and to practice my canvas skills. You can fully customize and fine-tune them in real time. Built with vanilla TypeScript.",
+  "order": 4,
+  "description": "Canvas particles were created purely for fun and to practice my canvas skills. You can fully customize and fine-tune them in real time. Built with vanilla TypeScript.",
   "githubLink": "https://github.com/terminaate/canvas-particles",
   "link": "https://terminaate.github.io/canvas-particles"
 }
