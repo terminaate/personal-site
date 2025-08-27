@@ -1,6 +1,7 @@
 backend:
   name: github
   repo: terminaate/personal-site
+  base_url: https://terminaate.site
 
 media_folder: 'src/assets/images' # Location where files will be stored in the repo
 public_folder: 'src/assets/images'
@@ -17,17 +18,17 @@ collections:
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - {
-          label: 'Description',
-          name: 'description',
-          widget: 'string',
-          required: false,
-        }
+        label: 'Description',
+        name: 'description',
+        widget: 'string',
+        required: false,
+      }
       - {
-          label: 'Published',
-          name: 'published',
-          widget: 'boolean',
-          default: true,
-        }
+        label: 'Published',
+        name: 'published',
+        widget: 'boolean',
+        default: true,
+      }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
 
@@ -44,22 +45,22 @@ collections:
       - { label: 'Name', name: 'name', widget: 'string' }
       - { label: 'Order', name: 'order', widget: 'number' }
       - {
-          label: 'Description',
-          name: 'description',
-          widget: 'string',
-          required: false,
-        }
+        label: 'Description',
+        name: 'description',
+        widget: 'string',
+        required: false,
+      }
       - {
-          label: 'Github Link',
-          name: 'githubLink',
-          widget: 'string',
-          required: false,
-          type: 'url',
-        }
+        label: 'Github Link',
+        name: 'githubLink',
+        widget: 'string',
+        required: false,
+        type: 'url',
+      }
       - {
-          label: 'Link',
-          name: 'link',
-          widget: 'string',
-          required: false,
-          type: 'url',
-        }
+        label: 'Link',
+        name: 'link',
+        widget: 'string',
+        required: false,
+        type: 'url',
+      }
