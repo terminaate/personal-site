@@ -6,5 +6,6 @@ export default {
       propList: ['*'], // properties to convert
       minPixelValue: 2, // don't convert anything below this value
     },
+    cssnano: {},
   },
 };

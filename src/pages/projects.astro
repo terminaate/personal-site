@@ -1,0 +1,79 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/base-layout.astro';
+import { Icon } from 'astro-icon/components';
+
+const projects = await getCollection('projects');
+---
+
+<BaseLayout title="Projects">
+  <div class="projects">
+    {
+      projects.map((o) => (
+        <a
+          target="_blank"
+          href={o.data.link || o.data.githubLink}
+          class="project"
+        >
+          <div class="titleContainer">
+            <span class="title">{o.data.name}</span>
+            <div class="links">
+              {o.data.link && o.data.githubLink && (
+                <Icon size="15" name="simple-icons:github" />
+              )}
+            </div>
+          </div>
+          <span class="desc">{o.data.description}</span>
+        </a>
+      ))
+    }
+  </div>
+</BaseLayout>
+
+<style is:global>
+  .projects {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+
+    .project {
+      text-decoration: none;
+      display: flex;
+      align-items: start;
+      flex-direction: column;
+      gap: 20px;
+      flex: 1;
+
+      .titleContainer {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        .title {
+          text-decoration: underline;
+          font-size: 23px;
+          font-family: var(--font-primary);
+          line-height: 100%;
+          font-weight: 600;
+        }
+
+        .links {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          width: fit-content;
+          /* height: 100%; */
+        }
+      }
+
+      .desc {
+        //background: red;
+        font-family: var(--font-secondary);
+        line-height: 100%;
+        font-weight: 550;
+        font-size: 18px;
+        color: var(--text-secondary);
+      }
+    }
+  }
+</style>
