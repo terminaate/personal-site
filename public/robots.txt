@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://terminaate.site/sitemap-index.xml

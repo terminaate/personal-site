@@ -30,7 +30,9 @@ export default defineConfig({
           }),
         ]),
     expressiveCode(),
-    sitemap(),
+    sitemap({
+      filter: (page) => !page.includes('admin'),
+    }),
     mdx(),
   ],
 
