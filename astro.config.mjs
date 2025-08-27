@@ -7,6 +7,8 @@ import icon from 'astro-icon';
 
 import vercel from '@astrojs/vercel';
 
+import decapCmsOauth from 'astro-decap-cms-oauth';
+
 // https://astro.build/config
 export default defineConfig({
   markdown: {
@@ -16,7 +18,7 @@ export default defineConfig({
     rehypePlugins: [rehypeAccessibleEmojis],
   },
 
-  integrations: [mdx(), icon()],
+  integrations: [mdx(), icon(), decapCmsOauth()],
 
   adapter: vercel(),
 });

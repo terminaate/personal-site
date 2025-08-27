@@ -20,6 +20,9 @@ importers:
       astro:
         specifier: ^5.12.3
         version: 5.13.2(@types/node@24.3.0)(rollup@4.46.3)(typescript@5.9.2)
+      astro-decap-cms-oauth:
+        specifier: ^0.5.1
+        version: 0.5.1(astro@5.13.2(@types/node@24.3.0)(rollup@4.46.3)(typescript@5.9.2))
       astro-icon:
         specifier: ^1.1.5
         version: 1.1.5
@@ -712,6 +715,11 @@ packages:
   astring@1.9.0:
     resolution: {integrity: sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg==}
     hasBin: true
+
+  astro-decap-cms-oauth@0.5.1:
+    resolution: {integrity: sha512-dxIfwj+E5XuUCGhbTWVA0XRLK0qXDKvflC0Jy4n0H219RpGXcHCQ3lmwE8aNO2/R16dSRJ//xoBjkuqSpYK5CQ==}
+    peerDependencies:
+      astro: ^5.0.0
 
   astro-icon@1.1.5:
     resolution: {integrity: sha512-CJYS5nWOw9jz4RpGWmzNQY7D0y2ZZacH7atL2K9DeJXJVaz7/5WrxeyIxO8KASk1jCM96Q4LjRx/F3R+InjJrw==}
@@ -3231,6 +3239,10 @@ snapshots:
   array-iterate@2.0.1: {}
 
   astring@1.9.0: {}
+
+  astro-decap-cms-oauth@0.5.1(astro@5.13.2(@types/node@24.3.0)(rollup@4.46.3)(typescript@5.9.2)):
+    dependencies:
+      astro: 5.13.2(@types/node@24.3.0)(rollup@4.46.3)(typescript@5.9.2)
 
   astro-icon@1.1.5:
     dependencies:
