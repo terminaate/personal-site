@@ -1,5 +1,121 @@
 ---
 import BaseLayout from '../layouts/base-layout.astro';
+import { lastFmApi } from '../lastfm';
+import type { Album, AlbumImage } from '../lastfm/types/album';
+import type { RecentTrack } from '../lastfm/types/recent-track';
+
+export const prerender = false;
+
+const getAlbums = async () => {
+  const data = await lastFmApi.request<{ topalbums: { album: Album[] } }>(
+    'user.gettopalbums',
+    {
+      limit: 1000,
+      period: 'overall',
+    },
+  );
+
+  return data.topalbums.album;
+};
+
+const getNowPlaying = async () => {
+  const data = await lastFmApi.request<{
+    recenttracks: { track: RecentTrack[] };
+  }>('user.getrecenttracks', {
+    limit: 1000,
+    period: 'overall',
+  });
+
+  const tracks = data.recenttracks.track;
+
+  return tracks.find((o) => o['@attr']?.nowplaying);
+};
+
+const albums = await getAlbums();
+const nowPlaying = await getNowPlaying();
+
+const getImageSrc = (o: AlbumImage<string>[]) => {
+  return o.find((o) => o.size === 'large')?.['#text'];
+};
 ---
 
-<BaseLayout title="Music"> page is under construction, for now) </BaseLayout>
+<BaseLayout title="Music">
+  <div class="albums">
+    {
+      nowPlaying && (
+        <div>
+          <img src={getImageSrc(nowPlaying.image)} alt="" />
+        </div>
+      )
+    }
+    {
+      albums.map((album) => (
+        <a href={album.url} target="_blank" class="album">
+          <div class="album-info">
+            <span class="album-name">{album.name}</span>
+            {album.name !== album.artist.name && (
+              <span class="album-artist">{album.artist.name}</span>
+            )}
+          </div>
+          <img class="album-image" src={getImageSrc(album.image)} alt="" />
+        </a>
+      ))
+    }
+  </div>
+</BaseLayout>
+
+<style>
+  .albums {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: start;
+
+    .album {
+      width: 170px;
+      height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+
+      .album-image {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .album-info {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s opacity;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+
+        .album-name {
+          font-family: var(--font-primary);
+          font-weight: 500;
+          font-size: 14px;
+        }
+
+        .album-artist {
+          font-family: var(--font-secondary);
+          color: var(--text-secondary);
+        }
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+</style>
