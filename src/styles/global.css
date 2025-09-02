@@ -1,39 +1,40 @@
 @import './reset.css';
 
 :root {
-    --font-primary: 'Segoe UI', Roboto, 'Fira Code', Menlo, monospace;
-    --font-secondary: monospace;
-    --background-primary: #0a0a0a;
-    --background-secondary: #1a1a1a;
-    --text-primary: #ffffff;
-    --text-secondary: #c9d2db;
+  --font-primary: 'Segoe UI', Roboto, 'Fira Code', Menlo, monospace;
+  --font-secondary: monospace;
+  --background-primary: #0a0a0a;
+  --background-secondary: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #c9d2db;
 
-    .dark,
-    .dark-theme,
-    :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
-        --color-background: #0a0a0a;
-    }
+  .dark,
+  .dark-theme,
+  :is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
+    --color-background: #0a0a0a;
+  }
 }
 
 body {
-    font-family: var(--font-primary);
-    color: var(--text-primary);
-    background-color: var(--background-primary);
-    padding: 10px;
-    min-height: 100vh;
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  font-family: var(--font-primary);
+  color: var(--text-primary);
+  background-color: var(--background-primary);
+  padding: 10px;
+  padding-block: 50px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 a {
-    color: var(--text-primary);
+  color: var(--text-primary);
 }
 
 code {
-    /*background: var(--card-background);*/
-    padding-inline: 3px;
-    border-radius: 2px;
+  /*background: var(--card-background);*/
+  padding-inline: 3px;
+  border-radius: 2px;
 }
